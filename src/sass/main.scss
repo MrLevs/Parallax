@@ -53,9 +53,6 @@
         top: 40%;
         z-index: 10;
         opacity: 0;
-        animation-name: content1;
-        animation-timing-function: linear;
-        animation-timeline: scroll();
     }
 
     &__title {
@@ -78,7 +75,6 @@
     &__images {
         width: 100%;
         height: 500vh;
-        background: rgba(130, 198, 248, 1);
     }
 
     &__item {
@@ -95,38 +91,31 @@
         height: 100%;
         position: fixed;
         left: 0;
-        animation-timing-function: linear;
-        animation-timeline: scroll();
     }
 
     &__mountain {
         background: url(../img/mountain.png) center / contain no-repeat;
         top: -20%;
-        animation-name: mountain;
     }
 
     &__clouds {
         background: url(../img/clouds.png) center / contain no-repeat;
         top: 0;
-        animation-name: clouds;
     }
 
     &__trees {
         background: url(../img/trees.png) center / contain no-repeat;
         top: 13%;
-        animation-name: trees;
     }
 
     &__cave {
         background: url(../img/cave.png) center / cover no-repeat;
         top: 0;
-        animation-name: cave;
     }
 
     &__ellipse {
         background: url(../img/ellipse.png) center / cover no-repeat;
         top: 0;
-        animation-name: ellipse1;
     }
 
     &__bloc {
@@ -136,9 +125,10 @@
         position: fixed;
         bottom: 50px;
         z-index: 10;
-        background: rgba($color: #1E1E1E, $alpha: 0.7);
+        background: rgba($color: #1e1e1e, $alpha: 0.7);
         border: 1px solid #fff;
         border-radius: 50%;
+        cursor: pointer;
     }
 
     &__arrow {
@@ -165,48 +155,45 @@
     }
 }
 
-//-------------------Animation-----------------
-@keyframes mountain {
-    to {
-        scale: 1.15;
+//----------------Content--------------------
+
+.content {
+    margin: 500px 0 0 0;
+    width: 100%;
+    position: relative;
+    z-index: 100;
+    background: #1e1e1e;
+    ::before {
+        content: "";
+        width: 100%;
+        height: 150px;
+        position: absolute;
+        top: -150px;
+        left: 0;
+        background: linear-gradient(rgba(#233e57, 0.2), rgba(#1e1e1e, 0.6));
+    }
+
+    &__box {
+        width: 100%;
+        padding: 50px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 25px 0;
+    }
+
+    &__text {
+        font-family: "Gravitas One", serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 1rem;
+        line-height: 150%;
+        color: #fff;
     }
 }
 
-@keyframes clouds {
-    to {
-        scale: 1.35;
-    }
-}
-
-@keyframes trees {
-    to {
-        scale: 1.25;
-    }
-}
-
-@keyframes cave {
-    to {
-        scale: 2;
-    }
-}
-
-@keyframes ellipse1 {
-    to {
-        scale: 3;
-    }
-}
-
-@keyframes content1 {
-    0% {
-        opacity: 0;
-    }
-    30% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
+//----------------Animation------------------
 
 @keyframes arrow {
     0% {
