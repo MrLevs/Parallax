@@ -18,19 +18,25 @@ window.onload = function () {
         window.addEventListener('scroll', function () {
 
             let parallaxHeight = parallax.getBoundingClientRect();
-            let distProcent = Math.abs(parallaxHeight.y / (parallaxHeight.height - (parallaxHeight.height / 5)) * 100);
 
-            if (distProcent > 100) {
-                distProcent = 100;
+            if (parallaxHeight.y <= 0) {
+                let distProcent = Math.abs(parallaxHeight.y / (parallaxHeight.height - (parallaxHeight.height / 5)) * 100);
+
+                if (distProcent > 100) {
+                    distProcent = 100;
+                }
+
+                parallaxTitle.style.opacity = `${0 + 0.01 * distProcent}`;
+                mountain.style.cssText = `scale: ${1 + (0.0015 * distProcent)};`;
+                clouds.style.cssText = `scale: ${1 + (0.0035 * distProcent)};`;
+                trees.style.cssText = `scale: ${1 + (0.0025 * distProcent)};`;
+                cave.style.cssText = `scale: ${1 + (0.01 * distProcent)};`;
+                ellipse.style.cssText = `scale: ${1 + (0.02 * distProcent)};`;
             }
-            parallaxTitle.style.opacity = `${0 + 0.01 * distProcent}`;
-            mountain.style.cssText = `scale: ${1 + (0.0015 * distProcent)};`;
-            clouds.style.cssText = `scale: ${1 + (0.0035 * distProcent)};`;
-            trees.style.cssText = `scale: ${1 + (0.0025 * distProcent)};`;
-            cave.style.cssText = `scale: ${1 + (0.01 * distProcent)};`;
-            ellipse.style.cssText = `scale: ${1 + (0.02 * distProcent)};`;
+
         });
 
+        //------------------Link---------------------
         btn.onclick = function () {
             let elemCord = content.getBoundingClientRect();
             let elemTop = Math.abs(elemCord.top - 150);
